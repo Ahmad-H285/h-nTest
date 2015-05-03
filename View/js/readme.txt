@@ -1,0 +1,1 @@
+This folder will contain all of the javaScript files that are written by the developers.

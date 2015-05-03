@@ -1,0 +1,1 @@
+This folder will contain all of the files that are used to generate UI or the front end of the project. 

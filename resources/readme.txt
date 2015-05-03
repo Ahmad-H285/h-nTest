@@ -1,0 +1,1 @@
+This folder will contain all of the resources used throughout the project. 

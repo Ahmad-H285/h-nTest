@@ -1,0 +1,1 @@
+This folder will contain files in the HTML format to be used as a template for example and CSS file to style these HTML files.
