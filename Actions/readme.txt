@@ -1,0 +1,1 @@
+This folder will contain all of the PHP files and any other file that will interact on the server side.
