@@ -1,1 +1,0 @@
-This folder will contain the exported databases. Each contributer shall export the database that he is working with a SQL file and add it here.
