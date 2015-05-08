@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div>
-	 	<form action="" method="post">
+	 	<form action="../../Actions/login_action.php" method="post">
 	 		<label for="login_email">Email: </label>
 	 			<input name="login_email" type="email" />
 
