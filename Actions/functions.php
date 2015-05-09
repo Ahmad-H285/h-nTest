@@ -45,7 +45,33 @@ Class Functions
 		}
 
 		echo "Your Registration has been completed successfull";
+	}
+
+	function login($email, $pass)
+	{
+		mysqli_select_db($this->con,'reminva2827');
+
+		if(!$email or !$pass )
+		{
+			die('Please Enter your Email and Password');
+		}
+
+		$sql = 'SELECT email,password FROM rev5285_users';
+
+		$result = mysqli_query($this->con, $sql);
+
+		while($row = mysqli_fetch_array($result)) 
+		{
+
+			if(($row['email'] == $email) && ($row['password'] == md5($pass,false)))
+			{
+				die('You have successfully signed in');
+			}
+
+			echo "Either your email or password is invalid";
+		}
 	}	
+
 }
 
 ?>
