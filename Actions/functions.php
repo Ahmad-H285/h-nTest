@@ -40,7 +40,7 @@ Class Functions
 			$sql = "INSERT INTO `rev5285_users`(`name`, `email`, `username`, `password`) VALUES ('$name','$email','$username','$password')";
 
 			mysqli_query($this->con,$sql);
-			mysql_close($this->con);
+			mysqli_close($this->con);
 
 		}
 
@@ -68,8 +68,9 @@ Class Functions
 				die('You have successfully signed in');
 			}
 
-			echo "Either your email or password is invalid";
 		}
+
+		echo "Either your email or password is invalid";
 	}	
 
 }
