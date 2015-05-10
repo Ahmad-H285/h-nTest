@@ -7,7 +7,7 @@ Class Functions
 	function __construct()
 	{
 		//echo "hello";
-		$this->con = mysqli_connect('localhost','root','root');
+		$this->con = mysqli_connect('localhost','root','1992275');
 
 		if(!$this->con)
 		{

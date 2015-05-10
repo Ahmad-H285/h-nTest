@@ -1,0 +1,19 @@
+div#login-form-container {
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#login_form{
+	top: 110px;
+	position: absolute;
+	left: 610px;
+}
+
+#login-form-field{
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-right: 5px;
+}
