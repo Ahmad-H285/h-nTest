@@ -8,14 +8,15 @@
 <body>
 	<div id="login-form-container">
 		<h1>Reminva Login</h1>
-	 	<form action="../../Actions/login_action.php" method="post" id="login_form">
+	 	<form action="../../Actions/login_action.php" method="post" id="login-reg-form">
 	 		<label for="login_email">Email: </label><br>
-	 			<input name="login_email" type="email" id="login-form-field"/><br>
+	 			<input name="login_email" type="text" class="login-form-field"/><br>
 
 	 		<label for="login_email" >Password: </label><br>
-	 			<input name="login_pass" type="password" id="login-form-field"/><br>
-	 		<button type="submit" name="login_submit">Submit</button>
-			<a href="register.php">Or Register Here</a> 	
+	 			<input name="login_pass" type="password" class="login-form-field" id="pass-field" maxlength="20"/><br>
+	 		<button type="submit" name="login_submit" disabled id="log-reg-button">Submit</button>
+			<a href="register.php">Or Register Here</a>
+		</form>
 	</div>
 
 	<script type="text/javascript" src="../../resources/lib/JS/jquery-2.1.4.js"></script>
