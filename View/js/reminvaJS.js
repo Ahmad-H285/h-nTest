@@ -3,6 +3,14 @@ var emailCheck = false;
 var passCheck  = false;
 /*****Valdiation variables end******/
 
+/*Valid and Invalid Indicators*/
+/*
+ these variables will hold icons that indicate 
+ either a valid or invalid data where required
+*/
+var invalid = '<span id="invalidEmail" style="color: red;">Invalid Email Address</span>';
+var valid   = '<span id="validEmail" style="color: green;">Valid Email Address</span>';
+
 /*  the following function is used to check the validity of the fields to either enable or disable the submit 
  *  button in the login and registration forms
  */
@@ -16,13 +24,33 @@ function enableFormButton(){
 }
 
 /*
+	the following function will check the password 
+	fields to confirm that both hold the same password to enable submission
+*/
+
+function passMatchCheck(){ 
+	var password_1 = $("#pass-field:first").val();
+	var password_2 = $("#pass-field:last").val();
+
+	if (password_1 === password_2){
+		console.log("Passwords match");
+		passCheck = true;
+		// call enableFormButton function
+	}
+	else{
+		console.log("Passwords do not match");
+		passCheck = false;
+		// call enableFormButton function
+	}
+}
+
+/*
  * the following function is used to check the email address after the user has finished typing it 
  */
 
-$("input[name='login_email']").blur(function(){
+$("input[name='reg-email']").blur(function(){
 	var re_email = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
-	var invalidEmail = '<span id="invalidEmail" style="color: red;">Invalid Email Address</span>';
-	var validEmail   = '<span id="validEmail" style="color: green;">Valid Email Address</span>';
+
 
 	if ($(this).val() == "" || !re_email.test($(this).val())){
 		// check to see if there is a message already displayed before adding another one
@@ -57,7 +85,7 @@ $("input[name='login_email']").blur(function(){
  * the following function is used to monitor the password as the user is typing 
  * to enable/disable the submit button
  */
-$("#pass-field").keyup(function(){
+$("input[name='reg-pass']").keyup(function(){
 
 	var re_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
 	if ($(this).val() == "" || !re_password.test($(this).val())){

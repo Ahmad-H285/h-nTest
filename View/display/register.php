@@ -25,12 +25,12 @@
 
 		<tr>
 			<td><label for="reg-email">Email <font color="red">*</font></label></td>
-			<td><input type="email" name="reg-email"></td>
+			<td><input type="text" name="reg-email" maxlength="256"></td>
 		</tr>
 
 		<tr>
 			<td><label for="reg-pass">Password <font color="red">*</font></label></td>
-			<td><input type="password" name="reg-pass"></td>
+			<td><input type="password" name="reg-pass" maxlength="20"></td>
 		</tr>
 
 		<tr>
@@ -39,11 +39,12 @@
 		</tr>
 
 		<tr>
-			<td><button type="submit" name="reg-submit">Register</button></td>
+			<td><button type="submit" name="reg-submit" disabled id="log-reg-button">Register</button></td>
 		</tr>
 
 	</table>
 </form>
-
+	<script type="text/javascript" src="../../resources/lib/JS/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="../js/reminvaJS.js"></script>
 </body>
 </html>
