@@ -14,7 +14,7 @@
 
 	 		<label for="login_email" >Password: </label><br>
 	 			<input name="login_pass" type="password" class="login-form-field" id="pass-field" maxlength="20"/><br>
-	 		<button type="submit" name="login_submit" disabled id="log-reg-button">Submit</button>
+	 		<button type="submit" name="login_submit" id="log-reg-button">Submit</button>
 			<a href="register.php">Or Register Here</a>
 		</form>
 	</div>
