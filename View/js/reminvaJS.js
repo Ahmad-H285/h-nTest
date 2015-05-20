@@ -29,18 +29,18 @@ function enableFormButton(){
 */
 
 function passMatchCheck(){ 
-	var password_1 = $("#pass-field:first").val();
-	var password_2 = $("#pass-field:last").val();
+	var password_1 = $(".passField:first").val();
+	var password_2 = $(".passField:last").val();
 
 	if (password_1 === password_2){
 		console.log("Passwords match");
 		passCheck = true;
-		// call enableFormButton function
+		//enableFormButton();
 	}
 	else{
 		console.log("Passwords do not match");
 		passCheck = false;
-		// call enableFormButton function
+		//enableFormButton();
 	}
 }
 
@@ -85,7 +85,7 @@ $("input[name='reg-email']").blur(function(){
  * the following function is used to monitor the password as the user is typing 
  * to enable/disable the submit button
  */
-$("input[name='reg-pass']").keyup(function(){
+$(".passField").keyup(function(){
 
 	var re_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
 	if ($(this).val() == "" || !re_password.test($(this).val())){
@@ -96,7 +96,7 @@ $("input[name='reg-pass']").keyup(function(){
 	else{
 		console.log("Password entered is good enough");
 		passCheck = true;
+		passMatchCheck();
 	}
-
 	enableFormButton();
 });

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>Registeration Page</title>
 </head>
 <body>
@@ -30,12 +31,12 @@
 
 		<tr>
 			<td><label for="reg-pass">Password <font color="red">*</font></label></td>
-			<td><input type="password" name="reg-pass" maxlength="20"></td>
+			<td><input type="password" name="reg-pass" maxlength="20" class="passField"></td>
 		</tr>
 
 		<tr>
 			<td><label for="pass-conf">Password Confirmation <font color="red">*</font></label></td>
-			<td><input type="password" name="pass-conf"></td>
+			<td><input type="password" name="pass-conf" maxlength="20" class="passField"></td>
 		</tr>
 
 		<tr>
