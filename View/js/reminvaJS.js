@@ -61,7 +61,7 @@ $("input[name='reg-email']").blur(function(){
 			$("#invalidEmail").remove();
 		}
 
-		$(this).after(invalidEmail,$(this));
+		//$(this).after(invalidEmail,$(this));
 		emailCheck = false;
 	}
 	else{
