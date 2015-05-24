@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>Registeration Page</title>
 </head>
 <body>
@@ -25,26 +26,29 @@
 
 		<tr>
 			<td><label for="reg-email">Email <font color="red">*</font></label></td>
-			<td><input type="email" name="reg-email" id="reg-email"></td>
+
+			<td><input type="text" name="reg-email" maxlength="256"></td>
 			<td><div id="email-result"></div></td>
+
 		</tr>
 
 		<tr>
 			<td><label for="reg-pass">Password <font color="red">*</font></label></td>
-			<td><input type="password" name="reg-pass"></td>
+			<td><input type="password" name="reg-pass" maxlength="20" class="passField"></td>
 		</tr>
 
 		<tr>
 			<td><label for="pass-conf">Password Confirmation <font color="red">*</font></label></td>
-			<td><input type="password" name="pass-conf"></td>
+			<td><input type="password" name="pass-conf" maxlength="20" class="passField"></td>
 		</tr>
 
 		<tr>
-			<td><button type="submit" name="reg-submit">Register</button></td>
+			<td><button type="submit" name="reg-submit" disabled id="log-reg-button">Register</button></td>
 		</tr>
 
 	</table>
 </form>
+
 
 <?php 
 

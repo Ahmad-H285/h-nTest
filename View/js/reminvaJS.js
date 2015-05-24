@@ -1,66 +1,104 @@
-// jQuery.validator.setDefaults({
-//   debug: true,
-//   success: "valid"
-// });
-// $( "#login_form" ).validate({
-//   rules: {
-//     field: {
-//       required: true,
-//       email: true
-//     }
-//   }
-// });
+/* these variables are used to check for the validty of form items  */
+var emailCheck = false;
+var passCheck  = false;
+/*****Valdiation variables end******/
 
-// my own code to validate email address: 
+/*Valid and Invalid Indicators*/
+/*
+ these variables will hold icons that indicate 
+ either a valid or invalid data where required
+*/
+var invalid = '<span id="invalidField" style="margin-left: 10px;"><img style="margin-bottom: -5px;" src="../../resources/media/images/invalid.png" width="20" height="20"></span>';
+var valid   = '<span id="validField" style="margin-left: 10px;"><img style="margin-bottom: -5px;" src="../../resources/media/images/valid.png" width="20" height="20"></span>';
 
-$("input[name='login_email']").blur(function(){
-	var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
+/*  the following function is used to check the validity of the fields to either enable or disable the submit 
+ *  button in the login and registration forms
+ */
+function enableFormButton(){
+	if (emailCheck && passCheck){ // all of the form fields are valid
+		$("#log-reg-button").removeAttr("disabled");
+	}
+	else{
+		$("#log-reg-button").attr("disabled","true");
+	}
+}
 
-	var invalidEmail = '<span id="invalidEmail" style="color: red;">Invalid Email Address</span>';
-	var validEmail   = '<span id="validEmail" style="color: green;">Valid Email Address</span>';
+/*
+	the following function will check the password 
+	fields to confirm that both hold the same password to enable submission
+*/
 
-	if ($(this).val() == "" || !re.test($(this).val())){
+function passMatchCheck(){ 
+	var password_1 = $(".passField:first").val();
+	var password_2 = $(".passField:last").val();
+
+	if (password_1 === password_2){
+		console.log("Passwords match");
+		passCheck = true;
+		//enableFormButton();
+	}
+	else{
+		console.log("Passwords do not match");
+		passCheck = false;
+		//enableFormButton();
+	}
+}
+
+/*
+ * the following function is used to check the email address after the user has finished typing it 
+ */
+
+$("input[name='reg-email']").blur(function(){
+	var re_email = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
+
+
+	if ($(this).val() == "" || !re_email.test($(this).val())){
 		// check to see if there is a message already displayed before adding another one
-		if($("#validEmail").length > 0){
-			$("#validEmail").remove();
+		if($("#validField").length > 0){
+			$("#validField").remove();
 		}
-		else if ($("#invalidEmail").length > 0){
-			$("#invalidEmail").remove();
+		else if ($("#invalidField").length > 0){
+			$("#invalidField").remove();
 		}
 
-		$(this).after(invalidEmail,$(this));
+		$(this).after(invalid,$(this));
+		emailCheck = false;
 	}
 	else{
 		// check to see if there is a message already displayed before adding another one
-		if($("#validEmail").length > 0){
-			$("#validEmail").remove();
+		if($("#validField").length > 0){
+			$("#validField").remove();
 		}
-		else if ($("#invalidEmail").length > 0){
-			$("#invalidEmail").remove();
+		else if ($("#invalidField").length > 0){
+			$("#invalidField").remove();
 		}
 
-		$(this).after(validEmail,$(this));
-
+		//$(this).after(valid,$(this)); // indicate that the email entered is valid
+		emailCheck = true;
 	}
-	// debugging
-
-	console.log($(this).val());
+	enableFormButton();
+	
 });
 
+/*
+ * the following function is used to monitor the password as the user is typing 
+ * to enable/disable the submit button
+ */
+$(".passField").keyup(function(){
 
-// Checking email availability in registeration page
-
-
-// $(document).ready(function(){
-// 	$("#reg-email").blur(function(){
-		
-// 		var reg_email = $("#reg_email").val();
-
-// 		$.post("../../Actions/aval.php", reg_email, function(result){
-// 			$("#email-result").innerhtml(result);
-//		});
-//	});
-//});
+	var re_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+	if ($(this).val() == "" || !re_password.test($(this).val())){
+		console.log("Please enter a password that contains at least 8 characters with one capital, small letter and a number");
+		console.log($(this).val() +" its length is:  "+ $(this).val().length);
+		passCheck = false;
+	}
+	else{
+		console.log("Password entered is good enough");
+		passCheck = true;
+		passMatchCheck();
+	}
+	enableFormButton();
+});
 
 $(document).ready(function() {
 	$("#reg-email").blur(function() {
@@ -77,4 +115,3 @@ $(document).ready(function() {
 	});
 	
 });
-

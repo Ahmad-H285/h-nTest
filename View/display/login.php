@@ -6,18 +6,22 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	
 	<div id="login-form-container">
 		<h1>Reminva Login</h1>
+
 	 	<form action="" method="post" id="login_form">
+
 	 		<label for="login_email">Email: </label><br>
-	 			<input name="login_email" type="email" id="login-form-field"/><br>
+	 		<input name="login_email" type="text" class="login-form-field" maxlength="256" /><br>
 
 	 		<label for="login_email" >Password: </label><br>
-	 			<input name="login_pass" type="password" id="login-form-field"/><br>
-	 		<button type="submit" name="login_submit">Submit</button>
-			<a href="register.php">Or Register Here</a> 	
-			</form>
-			
+
+	 		<input name="login_pass" type="password" class="login-form-field" id="pass-field" maxlength="20"/><br>
+	 		<button type="submit" name="login_submit" id="log-reg-button">Submit</button>
+			<a href="register.php">Or Register Here</a>
+		</form>
+	</div>
 			<?php
 				
 				if($_POST['login_email'] or $_POST['login_pass'])
@@ -31,7 +35,8 @@
 				}
 
 			?>
-	</div>
+
+
 
 	<script type="text/javascript" src="../../resources/lib/JS/jquery-2.1.4.js"></script>
 	<script type="text/javascript" src="../js/reminvaJS.js"></script>
