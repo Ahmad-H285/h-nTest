@@ -8,8 +8,8 @@ var passCheck  = false;
  these variables will hold icons that indicate 
  either a valid or invalid data where required
 */
-var invalid = '<span id="invalidEmail" style="color: red;">Invalid Email Address</span>';
-var valid   = '<span id="validEmail" style="color: green;">Valid Email Address</span>';
+var invalid = '<span id="invalidField" style="margin-left: 10px;"><img style="margin-bottom: -5px;" src="../../resources/media/images/invalid.png" width="20" height="20"></span>';
+var valid   = '<span id="validField" style="margin-left: 10px;"><img style="margin-bottom: -5px;" src="../../resources/media/images/valid.png" width="20" height="20"></span>';
 
 /*  the following function is used to check the validity of the fields to either enable or disable the submit 
  *  button in the login and registration forms
@@ -54,26 +54,26 @@ $("input[name='reg-email']").blur(function(){
 
 	if ($(this).val() == "" || !re_email.test($(this).val())){
 		// check to see if there is a message already displayed before adding another one
-		if($("#validEmail").length > 0){
-			$("#validEmail").remove();
+		if($("#validField").length > 0){
+			$("#validField").remove();
 		}
-		else if ($("#invalidEmail").length > 0){
-			$("#invalidEmail").remove();
+		else if ($("#invalidField").length > 0){
+			$("#invalidField").remove();
 		}
 
-		//$(this).after(invalidEmail,$(this));
+		$(this).after(invalid,$(this));
 		emailCheck = false;
 	}
 	else{
 		// check to see if there is a message already displayed before adding another one
-		if($("#validEmail").length > 0){
-			$("#validEmail").remove();
+		if($("#validField").length > 0){
+			$("#validField").remove();
 		}
-		else if ($("#invalidEmail").length > 0){
-			$("#invalidEmail").remove();
+		else if ($("#invalidField").length > 0){
+			$("#invalidField").remove();
 		}
 
-		//$(this).after(validEmail,$(this)); // indicate that the email entered is valid
+		//$(this).after(valid,$(this)); // indicate that the email entered is valid
 		emailCheck = true;
 	}
 
