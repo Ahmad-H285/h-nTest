@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form method="POST" action="../../Actions/register_action.php">
+<form method="POST" action="">
 	<table>
 		
 		<tr>
@@ -25,7 +25,8 @@
 
 		<tr>
 			<td><label for="reg-email">Email <font color="red">*</font></label></td>
-			<td><input type="email" name="reg-email"></td>
+			<td><input type="email" name="reg-email" id="reg-email"></td>
+			<td><div id="email-result"></div></td>
 		</tr>
 
 		<tr>
@@ -45,5 +46,28 @@
 	</table>
 </form>
 
+<?php 
+
+	if ($_POST['reg-pass'] && $_POST['pass-conf'] && $_POST['reg-email']) 
+	{
+		if($_POST['reg-pass'] != $_POST['pass-conf'])
+		{
+			echo "Password Does Not Match Password Confirmation";
+		}
+
+		else
+		{
+			require_once '../../Actions/functions.php';
+			
+			$register = new Functions();
+
+			$register -> register($_POST['username'], $_POST['first-name'], $_POST['last-name'], $_POST['reg-email'], $_POST['reg-pass'], $_POST['pass-conf']);
+
+		}
+	}
+?>
+
+	<script type="text/javascript" src="../../resources/lib/JS/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="../js/reminvaJS.js"></script>
 </body>
 </html>

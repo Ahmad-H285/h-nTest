@@ -71,6 +71,28 @@ Class Functions
 		}
 
 		echo "Either your email or password is invalid";
+	}
+
+	function check_avail($reg_email)
+	{
+		mysqli_select_db($this->con,'reminva2827');
+
+		if($reg_email)
+		{
+			$sql = 'SELECT email FROM rev5285_users';
+
+			$result = mysqli_query($this->con, $sql);
+
+			while($row = mysqli_fetch_array($result))
+			{
+				if($row['email'] == $reg_email)
+				{
+					die('This email already exists');
+				}
+			}
+
+			echo "Email Available";
+		}
 	}	
 
 }

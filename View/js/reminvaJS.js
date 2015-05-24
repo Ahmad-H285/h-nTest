@@ -46,3 +46,35 @@ $("input[name='login_email']").blur(function(){
 
 	console.log($(this).val());
 });
+
+
+// Checking email availability in registeration page
+
+
+// $(document).ready(function(){
+// 	$("#reg-email").blur(function(){
+		
+// 		var reg_email = $("#reg_email").val();
+
+// 		$.post("../../Actions/aval.php", reg_email, function(result){
+// 			$("#email-result").innerhtml(result);
+//		});
+//	});
+//});
+
+$(document).ready(function() {
+	$("#reg-email").blur(function() {
+		var remail = $("#reg_email").val();
+		$.ajax({
+		type: 'POST',
+		url: '../../Actions/aval.php',
+		data: remail,
+		dataType: 'text',
+		success: function(response) {
+			$("#email-result").innerHTML(response);
+		}
+	});
+	});
+	
+});
+
