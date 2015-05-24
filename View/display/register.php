@@ -27,7 +27,7 @@
 		<tr>
 			<td><label for="reg-email">Email <font color="red">*</font></label></td>
 
-			<td><input type="text" name="reg-email" maxlength="256"></td>
+			<td><input type="text" name="reg-email" id="reg_email" maxlength="256"></td>
 			<td><div id="email-result"></div></td>
 
 		</tr>

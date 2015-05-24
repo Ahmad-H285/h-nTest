@@ -64,22 +64,54 @@ $("input[name='reg-email']").blur(function(){
 		$(this).after(invalid,$(this));
 		emailCheck = false;
 	}
-	else{
+	else{ // email format is valid
 		// check to see if there is a message already displayed before adding another one
 		if($("#validField").length > 0){
 			$("#validField").remove();
 		}
 		else if ($("#invalidField").length > 0){
 			$("#invalidField").remove();
-		}
+
+			
 
 		//$(this).after(valid,$(this)); // indicate that the email entered is valid
 		emailCheck = true;
 	}
+	var remail = $(this).val();
+		
+			$.ajax({
+			type: 'POST',
+			url: '../../Actions/aval.php',
+			data: {'reg-email':remail},
+			dataType: 'text',
+			success: function(response) {
+				$("#email-result").html(response);
+			}
+			});
+}
 	enableFormButton();
 	
 });
 
+
+// $(document).ready(function() {
+// 	$("#reg_email").blur(function() {
+		
+// 		var remail = $(this).val();
+		
+// 		$.ajax({
+// 		type: 'POST',
+// 		url: '../../Actions/aval.php',
+// 		data: {'reg-email':remail},
+// 		dataType: 'text',
+// 		success: function(response) {
+// 			$("#email-result").html(response);
+// 		}
+// 	});
+
+// 	});
+	
+// });
 /*
  * the following function is used to monitor the password as the user is typing 
  * to enable/disable the submit button
@@ -100,18 +132,4 @@ $(".passField").keyup(function(){
 	enableFormButton();
 });
 
-$(document).ready(function() {
-	$("#reg-email").blur(function() {
-		var remail = $("#reg_email").val();
-		$.ajax({
-		type: 'POST',
-		url: '../../Actions/aval.php',
-		data: remail,
-		dataType: 'text',
-		success: function(response) {
-			$("#email-result").innerHTML(response);
-		}
-	});
-	});
-	
-});
+
