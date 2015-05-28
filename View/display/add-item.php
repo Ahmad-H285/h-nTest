@@ -11,14 +11,15 @@
 			</tr>
 
 			<tr>
-				<td><label for="item-name">Item Name</label></td>
+				<td><label for="item-name">Item Name <font color="red">*</font></label></td>
 				<td><input type="text" name="item-name"></td>
 			</tr>
 
 			<tr>
-				<td><label for="select-category">Select Category</label></td>
+				<td><label for="select-category">Select Category <font color="red">*</font></label></td>
 				<td>
 					<select>
+						<option></option>
 						<option>Books</option>
 						<option>Movies/Series</option>
 						<option>Games</option>
