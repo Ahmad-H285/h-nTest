@@ -24,6 +24,31 @@ function enableFormButton(){
 }
 
 /*
+	The updateValidationIcons function takes two parameters, validationResult which is either true or false and
+	element which the the string refering to the object you want to add the icon next to
+	The function will remove any previously added icons and add the relevant icon
+ */
+function updateValidationIcons(validationResult, element){
+
+	// check to see if there is a message already displayed before adding another one
+	if($("#validField").length > 0){
+		$("#validField").remove();
+	}
+	else if ($("#invalidField").length > 0){
+		$("#invalidField").remove();
+	}
+
+	if (validationResult == true){ // means put valid icon
+
+		$(element).after(valid,$(element));
+	}
+	else{ // means put invalid icon
+
+		$(element).after(invalid,$(element));
+	}
+}
+
+/*
 	the following function will check the password 
 	fields to confirm that both hold the same password to enable submission
 */
@@ -50,33 +75,19 @@ function passMatchCheck(){
 
 $("input[name='reg-email']").blur(function(){
 	var re_email = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
-
+	var emailField = "input[name='reg-email']";
 
 	if ($(this).val() == "" || !re_email.test($(this).val())){
 		// check to see if there is a message already displayed before adding another one
-		if($("#validField").length > 0){
-			$("#validField").remove();
-		}
-		else if ($("#invalidField").length > 0){
-			$("#invalidField").remove();
-		}
-
-		$(this).after(invalid,$(this));
+		
+		updateValidationIcons(false,emailField);
+		$("#email-result").empty().html("Email Format is incorrect!");
 		emailCheck = false;
 	}
 	else{ // email format is valid
 		// check to see if there is a message already displayed before adding another one
-		if($("#validField").length > 0){
-			$("#validField").remove();
-		}
-		else if ($("#invalidField").length > 0){
-			$("#invalidField").remove();
-
-			
-
-		//$(this).after(valid,$(this)); // indicate that the email entered is valid
-		emailCheck = true;
-	}
+		updateValidationIcons(true,emailField);
+		
 	var remail = $(this).val();
 		
 			$.ajax({
@@ -85,33 +96,24 @@ $("input[name='reg-email']").blur(function(){
 			data: {'reg-email':remail},
 			dataType: 'text',
 			success: function(response) {
-				$("#email-result").html(response);
+				$("#email-result").empty().html(response);
+				if (response == "Email Available"){
+					updateValidationIcons(true,emailField);
+					emailCheck = true;
+				}
+				else{ // the email is already used
+					
+					updateValidationIcons(false,emailField);
+					emailCheck = false;
+				}
+				enableFormButton();
 			}
 			});
-}
+	}
 	enableFormButton();
 	
 });
 
-
-// $(document).ready(function() {
-// 	$("#reg_email").blur(function() {
-		
-// 		var remail = $(this).val();
-		
-// 		$.ajax({
-// 		type: 'POST',
-// 		url: '../../Actions/aval.php',
-// 		data: {'reg-email':remail},
-// 		dataType: 'text',
-// 		success: function(response) {
-// 			$("#email-result").html(response);
-// 		}
-// 	});
-
-// 	});
-	
-// });
 /*
  * the following function is used to monitor the password as the user is typing 
  * to enable/disable the submit button
