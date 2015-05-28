@@ -61,6 +61,7 @@
 
 		else
 		{
+
 			require_once '../../Actions/functions.php';
 			
 			$register = new Functions();

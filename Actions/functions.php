@@ -44,10 +44,10 @@ Class Functions
 
 		}
 
-		echo "Your Registration has been completed successfull";
+		//echo "Your Registration has been completed successfull";
 	}
 
-	function login($email, $pass)
+	sfunction login($email, $pass)
 	{
 		mysqli_select_db($this->con,'reminva2827');
 
