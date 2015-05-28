@@ -23,7 +23,7 @@ Class Functions
 		if(!($first_name) or !($last_name) or !($email) or !($pass))
 		{
 			
-			die("Please fill the required fields");
+			echo("Please fill the required fields");
 		}
 
 		else 
@@ -33,7 +33,7 @@ Class Functions
 				die('Password Does Not Match Password Confirmation');
 			}
 
-			$name = $first_name . $last_name;
+			$name = $first_name ." ". $last_name;
 
 			$password = md5($pass, false);
 
@@ -42,9 +42,9 @@ Class Functions
 			mysqli_query($this->con,$sql);
 			mysqli_close($this->con);
 
+			echo "Your Registration has been completed successfull";
 		}
 
-		//echo "Your Registration has been completed successfull";
 	}
 
 	function login($email, $pass)
