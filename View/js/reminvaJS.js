@@ -73,27 +73,22 @@ function passMatchCheck(){
  * the following function is used to check the email address after the user has finished typing it 
  */
 
- $("input[name='reg-email']").blur(function(){
-// 	var re_email = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
-// 	var emailField = "input[name='reg-email']";
+$("input[name='reg-email']").blur(function(){
+	var re_email = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
+	var emailField = "input[name='reg-email']";
 
-// 	if ($(this).val() == "" || !re_email.test($(this).val())){
-// 		// check to see if there is a message already displayed before adding another one
+	if ($(this).val() == "" || !re_email.test($(this).val())){
+		// check to see if there is a message already displayed before adding another one
 		
-// 		updateValidationIcons(false,emailField);
-// 		$("#email-result").empty().html("Email Format is incorrect!");
-// 		emailCheck = false;
-// 	}
-// 	else{ // email format is valid
-// 		// check to see if there is a message already displayed before adding another one
-// 		updateValidationIcons(true,emailField);
+		updateValidationIcons(false,emailField);
+		$("#email-result").empty().html("Email Format is incorrect!");
+		emailCheck = false;
+	}
+	else{ // email format is valid
+		// check to see if there is a message already displayed before adding another one
+		updateValidationIcons(true,emailField);
 		
-	
-// 	enableFormButton();
-	
-// });
-
-var remail = $(this).val();
+	var remail = $(this).val();
 		
 			$.ajax({
 			type: 'POST',
@@ -101,11 +96,24 @@ var remail = $(this).val();
 			data: {'reg-email':remail},
 			dataType: 'text',
 			success: function(response) {
-				$("#email-result").html(response);
+				$("#email-result").empty().html(response);
+				if (response == "Email Available"){
+					updateValidationIcons(true,emailField);
+					emailCheck = true;
 				}
+				else{ // the email is already used
+					
+					updateValidationIcons(false,emailField);
+					emailCheck = false;
+				}  
+				enableFormButton();
+			}
 			});
-		});
+	}
+	enableFormButton();
 	
+});
+
 /*
  * the following function is used to monitor the password as the user is typing 
  * to enable/disable the submit button
