@@ -39,7 +39,8 @@
 
 			<tr>
 				<td><label for="notification">Notification</label></td>
-				<td><input name="notification" type="text"></td>
+				<td><input name="date" type="text"></td>
+				<td><input name="time" type="text"></td>
 			</tr>
 			
 			<tr>
