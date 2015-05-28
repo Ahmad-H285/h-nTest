@@ -105,7 +105,7 @@ $("input[name='reg-email']").blur(function(){
 					
 					updateValidationIcons(false,emailField);
 					emailCheck = false;
-				}
+				}  
 				enableFormButton();
 			}
 			});
