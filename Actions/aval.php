@@ -1,7 +1,7 @@
 <?php
 
-
-require_once('functions.php');
+//echo "Hello";
+require_once 'functions.php';
 
 $avalability = new Functions();
 
