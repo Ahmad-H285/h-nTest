@@ -52,7 +52,7 @@
 
 <?php 
 
-	if ($_POST['reg-pass'] && $_POST['pass-conf'] && $_POST['reg-email']) 
+	if (isset($_POST['reg-pass']) && isset($_POST['pass-conf']) && isset($_POST['reg-email'])) 
 	{
 		if($_POST['reg-pass'] != $_POST['pass-conf'])
 		{
