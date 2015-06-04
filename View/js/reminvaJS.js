@@ -135,3 +135,29 @@ $(".passField").keyup(function(){
 });
 
 
+/*
+ * For item addition validation
+ */
+ $("#add-new-item").submit(function(event){
+
+ 	for (var i = 0; i < $(".required-item-field").length; i++) {
+ 		var formField = $(".required-item-field").eq(i);
+ 		if(formField.val() == ""){
+ 			if(formField.next("#invalidField").length == 0){ // in order not to add it again if there is an icon already
+ 				formField.after(invalid,formField);
+ 			}	
+ 			event.preventDefault();
+ 		}
+ 		else {
+ 			if(formField.next("#invalidField").length >0){ // if the field is not empty, remove the invalid icon if any
+ 				formField.next("#invalidField").remove();
+ 			}
+ 		}
+ 	}
+ });
+
+ $(".required-item-field").bind("change keyup",function(){ // to remove the invalid icon if any once the fields have values
+ 	if(($(this).val() != "") && ($(this).next("#invalidField").length > 0)) {
+ 		$(this).next().remove();
+ 	}
+ });

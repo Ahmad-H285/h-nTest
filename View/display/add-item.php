@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>Add Item</title>
 </head>
 <body>
-	<form action="" method="POST">
+	<form action="" method="POST" id="add-new-item">
 		<table>
 			<tr>
 				<h1>Add New Item</h1>
@@ -12,13 +13,13 @@
 
 			<tr>
 				<td><label for="item-name">Item Name <font color="red">*</font></label></td>
-				<td><input type="text" name="item-name"></td>
+				<td><input type="text" name="item-name" class="required-item-field"></td>
 			</tr>
 
 			<tr>
 				<td><label for="select-category">Select Category <font color="red">*</font></label></td>
 				<td>
-					<select>
+					<select class="required-item-field">
 						<option></option>
 						<option>Books</option>
 						<option>Movies/Series</option>
@@ -54,5 +55,7 @@
 			</tr>
 		</table>
 	</form>
+	<script type="text/javascript" src="../../resources/lib/JS/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="../js/reminvaJS.js"></script>
 </body>
 </html>
